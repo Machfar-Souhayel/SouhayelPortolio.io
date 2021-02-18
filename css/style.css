@@ -1,0 +1,443 @@
+:root{
+    --MyRed: #f05454;
+    --MyBlue: #30475e;
+    --MyBlack: #222831;
+    --MyGrey: #dddddd;
+    --MyTextColor: rgba(235, 228, 228, 0.9);
+}
+/* ==========================================================================
+   Set General Font
+   ========================================================================== */
+html{
+    box-sizing: border-box;
+    color: var(--MyGrey);
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fjalla One', sans-serif;
+    line-height: 1.125;
+}
+p{
+    line-height: 1.125;
+}
+/* ==========================================================================
+   Grid layout
+   ========================================================================== */
+div.container{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+/* ==========================================================================
+   Header block
+   ========================================================================== */
+header{
+    width: 100%;
+    height: 50px;
+    grid-column: 1/13;
+    grid-row: 1/2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--MyBlack);
+}
+
+header nav ul{
+    min-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header div.logo{
+    color: var(--MyTextColor);
+    font-size: 1.4em;
+}
+
+header nav ul li{
+    cursor: pointer;
+}
+
+header nav ul li a{
+    text-decoration: none;
+    color: var(--MyTextColor);
+    font-size: 1.4em;
+    transition: 0.5s ease;
+}
+
+header nav ul li:hover a{
+    color: var(--MyRed);
+}
+
+header div.burger{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+    display: none;
+}
+
+header div.burger span{
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(240, 84, 84, 0.5);;
+    transition: all .5s ease-in-out;
+}
+
+header div.burger span::before,
+header div.burger span::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(240, 84, 84, 0.5);;
+    transition: all .5s ease-in-out;
+}
+
+header div.burger span::before{
+    transform: translateY(-16px);
+}
+
+header div.burger span::after{
+    transform: translateY(16px);
+}
+
+/* ANIMATION */
+header div.burger.open span{
+    transform: translateX(-50px);
+    background: transparent;
+    box-shadow: none;
+}
+
+header div.burger.open span::before{
+    transform: rotate(45deg) translate(35px, -35px);
+}
+
+header div.burger.open span::after{
+    transform: rotate(-45deg) translate(35px, 35px);
+
+}
+
+
+/* ==========================================================================
+   Section Showcase
+   ========================================================================== */
+.showcase {
+    grid-column: 1/13;
+    grid-row: 2/3;
+    text-align: center;
+    padding-top: 8ch;
+}
+.showcase h1{
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 1ch;
+    color: var(--MyBlack);
+    word-spacing: .2ch;
+}
+.showcase p{
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--MyBlue);
+    margin: 3ch 0 8ch 0;
+    word-spacing: .2ch;
+    text-shadow: 0 1px 1px rgba(240, 84, 84, 0.5);
+}
+.showcase img{
+    display: block;
+    margin: 0 auto;
+}
+section.showcase > img:nth-child(3){
+    width: 210px;
+    background-color: var(--MyRed);
+    border: 1px solid var(--MyGrey);
+    border-radius: 50%;
+    margin-bottom: 5em;
+}
+section.showcase > img:nth-child(4){
+    width: 60%;
+}
+/* ==========================================================================
+   Section Work
+   ========================================================================== */
+section.work{
+    grid-column: 1/13;
+    grid-row: 3/4;
+    min-height: 600px;
+    background-color: var(--MyRed);
+}
+
+section.work h1{
+    font-size: 3em;
+    font-weight: bold;
+    margin: 30px auto;
+    margin-top: 70px;
+    color: var(--MyTextColor);
+    word-spacing: .2ch;
+}
+
+section.work p{
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 3ch 0 4ch 0;
+    color: var(--MyTextColor);
+    word-spacing: .2ch;
+}
+
+section.work div.projects{
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+section.work div.projects .card{
+    width: 30%;
+    height: 200px;
+    margin: 20px 10px;
+    background: var(--MyBlack);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+section.work div.projects .card figure{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+section.work div.projects .card figure img{
+    width: 100%;
+    height: inherit;
+    image-rendering: pixelated;
+    filter: grayscale(0);
+    transition: .4s ease-in;
+}
+
+div.projects .card > div{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: .8s ease-in-out;
+}
+div.projects .card:hover > div{
+    background: var(--MyBlue);
+    opacity: 1;
+}
+div.projects .card:hover > figure img{
+    filter: grayscale(1);
+}
+div.projects .card > div h4 {
+    width: 80%;
+    height: 40px;
+    color: var(--MyTextColor);
+    letter-spacing: 0.06em;
+    word-spacing: 0.2em;
+    line-height: 1.6em;
+}
+div.projects .card > div button {
+    --offset: 10px;
+    --border-size: 2px;
+    display: block;
+    position: relative;
+    padding: 1em 1.8em;
+    margin-bottom: 30px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border: 1px solid var(--MyRed);
+    background: transparent;
+    color: var(--MyRed);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: 0.4s ease-in;
+    transform: translateY(30px);
+    box-sizing: border-box;
+  }
+  div.projects .card > div button:hover{
+    background: var(--MyRed);
+    border-color:var(--MyTextColor);
+    color: var(--MyTextColor);
+  }
+
+  div.projects .card > div h4 {
+    margin: 20px auto
+  }
+  div.projects .card > div button > i {
+  }
+
+/* ==========================================================================
+   Section AboutMe
+   ========================================================================== */
+   section.about{
+    grid-column: 1/13;
+    grid-row: 4/5;
+    min-height: 600px;
+    background-color: #fff;
+}
+
+section.about h1{
+    font-size: 3em;
+    font-weight: bold;
+    margin: 55px 0 1ch 0;
+    color: var(--MyBlack);
+    word-spacing: .2ch;
+}
+
+section.about p{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5ch;
+    color: var(--MyBlack);
+    word-spacing: .2ch;
+}
+
+/* ==========================================================================
+   Footer block
+   ========================================================================== */
+footer{
+    grid-column: 1/13;
+    grid-row: 6/7;
+    height: 400px;
+    background-color: var(--MyGrey);
+    color: var(--MyBlack);
+}
+
+/* ==========================================================================
+   Responsive design
+   ========================================================================== */
+@media only screen and (max-width: 992px) {
+    /* showcase */
+    section.showcase h1{
+        font-size: 2.5em;
+    }
+    section.showcase p{
+        font-size: 1.2em;
+    }
+    
+    /* work */
+    section.work div.projects{
+        width: 95%;
+    }
+
+    section.work div.projects .card{
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Header */
+    header{
+        flex-direction: column;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    header div.logo{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header nav{
+        display: none;
+    }
+    header nav.open {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 50vh;
+        background: var(--MyBlack); 
+        border-top: 1px solid var(--MyTextColor);
+        padding: 20px 0 20px 0;
+        opacity: .95;  
+        position: fixed;
+        top: 50px;
+        animation: navAnimation .4s ease-in-out;  
+    }
+    @keyframes navAnimation {
+        from{
+            transform: translateX(100%);
+        }
+        top{
+            transform: translateX(0);
+        }
+    }
+
+    header nav.open ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    header nav.open ul li {
+        width: 100%;
+    }
+
+    header div.burger{
+        display: flex;
+    }
+    /* showcase */
+    section.showcase{
+        padding-top: 5ch;
+    }
+    section.showcase h1{
+        font-size: 2em;
+    }
+    section.showcase p{
+        margin-bottom: 5ch;
+        font-size: 1em;
+    }
+    section.showcase > img:nth-child(3){
+        width: 150px;
+    }
+
+    section.showcase > img:nth-child(4){
+        width: 90%;
+    }
+
+    /* work */
+    section.work div.projects{
+        width: 95%;
+        justify-content: center;
+    }
+    section.work div.projects .card{
+        width: 100%;
+        height: 400px;
+    }
+}
